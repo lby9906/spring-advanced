@@ -5,6 +5,8 @@ import org.example.expert.domain.common.exception.InvalidRequestException;
 import org.example.expert.domain.common.exception.ServerException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -39,6 +41,15 @@ public class GlobalExceptionHandler {
         errorResponse.put("message", message);
 
         return new ResponseEntity<>(errorResponse, status);
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, String>> validation(MethodArgumentNotValidException e) {
+        Map<String, String> error = new HashMap<>();
+        e.getAllErrors().forEach(
+            c -> error.put(((FieldError) c).getField(), c.getDefaultMessage())
+        );
+        return ResponseEntity.badRequest().body(error);
     }
 }
 
