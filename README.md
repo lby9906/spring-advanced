@@ -57,6 +57,6 @@
 
 ### Lv 7. 테스트 커버리지
 - 테스트 커버리지 결과 이미지  
-  ![테스트 커버리지](<img width="654" height="634" alt="Image" src="https://github.com/user-attachments/assets/ec8e8966-9fba-443d-b74c-b9ec539ce980" />) 
+ <img width="654" height="634" alt="Image" src="https://github.com/user-attachments/assets/ec8e8966-9fba-443d-b74c-b9ec539ce980" />
 
 ---
